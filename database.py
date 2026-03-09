@@ -1,17 +1,41 @@
 import hashlib
 import sqlite3
+conn = sqlite3.connect('Certificates.db')
+cursor = conn.cursor()
+cursor.execute("""CREATE TABLE IF NOT EXISTS Certificates(
+certificateID TEXT NOT NULL primary key,
+name text NOT NULL,
+designation text NOT NULL,
+course text NOT NULL,
+year INTEGER NOT NULL,
+expiry_date text NOT NULL,
+hash text NOT NULL)""")
+conn.commit()
+conn.close()
 
-def create_database():
+def insert_certificate(certificate):
     conn = sqlite3.connect('Certificates.db')
     cursor = conn.cursor()
-    cursor.execute("""CREATE TABLE IF NOT EXISTS Certificates(
-    certificateID TEXT NOT NULL primary key,
-    name text NOT NULL,
-    designation text NOT NULL,
-    course text NOT NULL,
-    year INTEGER NOT NULL,
-    expiry_date text NOT NULL,
-    hash text NOT NULL)""")
+    cursor.execute("INSERT INTO Certificates VALUES (?,?,?,?,?,?,?,?)",
+                   (cert["credential_id"],
+            cert["name"],
+            cert["designation"],
+            cert["course"],
+            cert["year"],
+            cert["expiry"],
+            cert["hash"]))
     conn.commit()
-    conn.close()
-create_database()
+
+def get_certificate(credential_id):
+    cursor.execute("SELECT * FROM Certificates WHERE certificateID = ?",
+                   (credential_id,))
+    cert = cursor.fetchone()
+    return cert
+def get_certificate_hash():
+    cursor.execute("SELECT hash FROM Certificates")
+    hash = cursor.fetchall()
+    return [hash[0] for r in hash]
+def delete_certificate(credential_id):
+    cursor.execute("DELETE FROM Certificates WHERE certificateID = ?",
+                   (credential_id,))
+    conn.commit()
