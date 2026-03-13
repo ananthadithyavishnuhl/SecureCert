@@ -26,6 +26,7 @@ def insert_certificate(certificate):
             certificate["expiry"],
             certificate["hash"]))
     conn.commit()
+    merkleRoot()
 
 def get_certificate(credential_id):
     cursor.execute("SELECT * FROM Certificates WHERE certificateID = ?",
@@ -35,12 +36,13 @@ def get_certificate(credential_id):
 def get_certificate_hash():
     cursor.execute("SELECT hash FROM Certificates")
     hash = cursor.fetchall()
-    return [hash[0] for r in hash]
+    return [r[0] for r in hash]
 def delete_certificate(credential_id):
     cursor.execute("DELETE FROM Certificates WHERE certificateID = ?",
                    (credential_id,))
     conn.commit()
-def MerkleRoot():
+    merkleRoot()
+def merkleRoot():
     global current_root
     cursor.execute("SELECT hash FROM Certificates")
     Data = cursor.fetchall()
