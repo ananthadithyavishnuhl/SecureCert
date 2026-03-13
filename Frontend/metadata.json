@@ -1,0 +1,5 @@
+{
+  "name": "Certificate Verification App",
+  "description": "Frontend for a certificate verification system with Merkle tree support.",
+  "requestFramePermissions": []
+}
