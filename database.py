@@ -17,7 +17,7 @@ conn.close()
 def insert_certificate(certificate):
     conn = sqlite3.connect('Certificates.db')
     cursor = conn.cursor()
-    cursor.execute("INSERT INTO Certificates VALUES (?,?,?,?,?,?,?,?)",
+    cursor.execute("INSERT INTO Certificates VALUES (?,?,?,?,?,?,?)",
                    (certificate["credential_id"],
             certificate["name"],
             certificate["designation"],
