@@ -13,7 +13,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'CertVerify',
+  title: 'SecureCert',
   description: 'Certificate Verification App',
 };
 

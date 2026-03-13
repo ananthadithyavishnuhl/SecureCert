@@ -13,7 +13,7 @@ import {
   AlertCircle
 } from 'lucide-react';
 
-const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000';
+const BACKEND_URL = "/api";
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState('issue');
@@ -24,10 +24,10 @@ export default function Home() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <ShieldCheck className="w-6 h-6 text-indigo-600" />
-            <h1 className="text-xl font-semibold tracking-tight">CertVerify</h1>
+            <h1 className="text-xl font-semibold tracking-tight">SecureCert</h1>
           </div>
           <div className="text-sm text-slate-500 hidden sm:block">
-            Blockchain-backed Certificate System
+            Merkle-Root-backed Certificate System
           </div>
         </div>
       </header>
