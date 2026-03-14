@@ -27,7 +27,8 @@ def input_details():
     else:
         try:
             expiry = datetime.strptime(expiry, "%Y-%m-%d").date()
-        except:
+            expiry=str(expiry)
+        except ValueError:
             return "Invalid date format"
 
     certificate = {
