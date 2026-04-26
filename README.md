@@ -1,5 +1,5 @@
 # SecureCert
-SecureCert — Cryptographic Certificate Verification System
+SecureCert — Cryptographic Certificate Verification System.
 SecureCert is a certificate issuance and verification system that ensures certificate integrity using cryptographic hashing and Merkle trees.
 The system allows organizations to:
     Issue certificates,
